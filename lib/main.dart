@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja_natura/screens/home_screen.dart';
+import 'package:loja_natura/screens/login_screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
          primaryColor: Color.fromARGB(255, 4, 125, 145)
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      //home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
