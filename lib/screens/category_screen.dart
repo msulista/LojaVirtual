@@ -29,7 +29,7 @@ class CategoryScreen extends StatelessWidget {
             future: Firestore.instance.collection("products").document(snapshot.documentID).collection("itens").getDocuments(),
               builder: (context, snapshot) {
                 if(!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator(),)
+                  return Center(child: CircularProgressIndicator(),);
                 } else {
                   return TabBarView(
                       physics: NeverScrollableScrollPhysics(),
