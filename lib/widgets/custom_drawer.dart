@@ -48,7 +48,7 @@ class CustomDrawer extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Olá sou a Leticia Sulsbacher,\n posso ajudala?",
+                          Text("Olá sou a Leticia Sulzbacher,\n posso ajudala?",
                           style:  TextStyle( fontSize: 18.0, fontStyle: FontStyle.italic),
                           ),
                           GestureDetector(
