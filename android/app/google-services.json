@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "106786936680",
+    "firebase_url": "https://lojaleticia-ddf98.firebaseio.com",
+    "project_id": "lojaleticia-ddf98",
+    "storage_bucket": "lojaleticia-ddf98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106786936680:android:2ac0690512390a74",
+        "android_client_info": {
+          "package_name": "rs.com.sulista.lojanatura"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106786936680-3h1l4i78hmvfdun6fap3jm8es401ki96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3JrVPgI1hOAyxq8GPQkCPRZBMCr4KDmk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
