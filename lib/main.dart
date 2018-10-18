@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loja_natura/screens/home_screen.dart';
 import 'package:loja_natura/screens/login_screen.dart';
+import 'package:loja_natura/screens/singup_screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       //home: HomeScreen(),
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }
