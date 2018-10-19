@@ -3,28 +3,39 @@ import 'package:loja_natura/models/user_model.dart';
 import 'package:loja_natura/screens/singup_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-class LoginScreen extends StatelessWidget {
+
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
 
   final _formKey = GlobalKey<FormState>();
+  final _scafoldKey = GlobalKey<ScaffoldState>();
+
+  final _emailController = TextEditingController();
+  final _senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scafoldKey,
       appBar: AppBar(
         title: Text("Entrar"),
         centerTitle: true,
         actions: <Widget>[
           FlatButton(
             child: Text(
-              "CRIAR CONTA",
-              style: TextStyle(
-                fontSize: 15.0,
-              )
+                "CRIAR CONTA",
+                style: TextStyle(
+                  fontSize: 15.0,
+                )
             ),
             textColor: Colors.white,
             onPressed: (){
               Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context)=>SingupScreen())
+                  MaterialPageRoute(builder: (context)=>SingupScreen())
               );
             },
           )
@@ -41,6 +52,7 @@ class LoginScreen extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               children: <Widget>[
                 TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: "E-mail",
                   ),
@@ -51,6 +63,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16.0,),
                 TextFormField(
+                  controller: _senhaController,
                   decoration: InputDecoration(
                     hintText: "Senha",
                   ),
@@ -62,7 +75,22 @@ class LoginScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      if(_emailController.text.isEmpty) {
+                        _scafoldKey.currentState.showSnackBar(
+                            SnackBar(content: Text("Insira um e-mail válido para recuperar!"),
+                              backgroundColor: Colors.redAccent,
+                              duration: Duration(seconds: 2),)
+                        );
+                      } else {
+                        model.recoverPass(_emailController.text);
+                        _scafoldKey.currentState.showSnackBar(
+                            SnackBar(content: Text("Confira seu e-mail!"),
+                              backgroundColor: Theme.of(context).primaryColor,
+                              duration: Duration(seconds: 2),)
+                        );
+                      }
+                    },
                     child: Text(
                       "Esqueci minha senha",
                       textAlign: TextAlign.right,
@@ -84,9 +112,13 @@ class LoginScreen extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                       onPressed: (){
                         if(_formKey.currentState.validate()) {
-
+                          model.singIn(
+                              email: _emailController.text,
+                              pass: _senhaController.text,
+                              onSuccess: _onSuccess,
+                              onFail: _onFail
+                          );
                         }
-                        model.singIn();
                       }
                   ),
                 ),
@@ -98,4 +130,20 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+
+  void _onSuccess() {
+    Navigator.of(context).pop();
+  }
+
+  void _onFail() {
+    _scafoldKey.currentState.showSnackBar(
+        SnackBar(content: Text("Falha ao entrar!"),
+          backgroundColor: Colors.redAccent,
+          duration: Duration(seconds: 2),)
+    );
+    Future.delayed(Duration(seconds: 2)).then((_){
+      Navigator.of(context).pop();
+    });
+  }
+
 }

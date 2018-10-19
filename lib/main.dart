@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja_natura/models/user_model.dart';
 import 'package:loja_natura/screens/home_screen.dart';
-import 'package:loja_natura/screens/login_screen.dart';
-import 'package:loja_natura/screens/singup_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 void main() => runApp(new MyApp());
